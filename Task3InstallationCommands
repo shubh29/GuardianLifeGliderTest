@@ -1,0 +1,23 @@
+#Tomcat Installation Instructions Below
+
+yum install java-1.8*
+cd /opt
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz
+tar -zvxf apache-tomcat-9.0.89.tar.gz
+cd apache-tomcat-9.0.55
+ls
+cd apache-tomcat-9.0.89/
+cd bin/
+chmod +x startup.sh
+chmod +x shutdown.sh
+ls -l
+ln -s /opt/apache-tomcat-9.0.89/bin/startup.sh /usr/local/bin/tomcatup
+ln -s /opt/apache-tomcat-9.0.89/bin/shutdown.sh /usr/local/bin/tomcatdown
+tomcatup
+
+cd /opt/apache-tomcat-9.0.89/
+vi ValidateTomcatService.sh and paste the bash script below from the ValidateTomcatService.sh file in this repository
+Run the below commands for the script to run daily at 6am (M-F)
+chmod +x ValidateTomcatService.sh
+cronjob -e
+0 6 * * * 1-5 /opt/apache-tomcat-9.0.89/ValidateTomcatService.sh
