@@ -1,0 +1,10 @@
+Account A: Create an SNS topic, an S3 bucket,and an EC2 instance.
+Account B: Create an SQS queue, subscribe the SQS queue to the SNS topic, and create an EC2 instance.
+Python Script on Server A:
+Publish messages to the SNS topic.
+Python Script on Server B:
+Poll the SQS queue for messages, process them, and upload to S3.
+
+Local:
+Configure AWS Credentials locally for both the accounts
+Run the python script in ec2 of account A
